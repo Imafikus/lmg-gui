@@ -324,7 +324,7 @@ def isNumber(s):
            
 def isOkay(number):
         for row in rows:
-                if (row.limit < number):
+                if((number < row.limit ) and (number > 0)):
                         return False
                 else:
                         return True
