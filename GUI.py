@@ -222,10 +222,16 @@ poligoni = [ lZmaj, lPersej, lVMedved, lBlizanci, lOrao, lPegaz, lCefej, lBik, l
 rows = []
 
 polygonNames = ["Zmaj (Draco)", "Persej (Perseus)", "Veliki Medved (Ursa Major)", "Blizanci (Gemini)", "Orao (Aquila)", "Pegaz (Pegasus)", "Cefaj (Cepheus)", "Bik (Taurus)", "Lav(Leo)", "Devica (Virgo)", "Volar (Botes)",  "Vaga(Libra)", "Herkul/Lira (Hercules/Lyra)", "Labud (Cygnus)", "Herkul/Zmaj (Hercules/Draco)", "Lovacki Psi (Canes Veratici)", "Kocijas (Auriga)", "Andromeda (Andromeda)", "Mali Medved (Ursa Minor)"]
+
+
 imageNames = ["poligon1.jpg", "poligon2.jpg", "poligon3.jpg", "poligon4.jpg","poligon5.jpg", "poligon6.jpg", "poligon7.jpg", "poligon8.jpg", "poligon9", "poligon10.jpg", "poligon11.jpg", "poligon12.jpg","poligon13.jpg", "poligon14.jpg", "poligon15.jpg", "poligon16.jpg", "poligon17.jpg", "poligon18.jpg", "poligon19.jpg" ]
-                                                                         
+
+	
+limits = [ 73, 59, 54, 30, 27, 49, 65, 32, 45, 31, 86, 30, 52, 65, 61, 36, 
+           81, 52, 32 ]     
+                                                                        
 class Row:
-        def __init__(self, parent, text, imgPath):
+        def __init__(self, parent, text, imgPath, limit):
                 
                 self.frame = Frame(parent)
                 self.frame.pack(fill=X)
@@ -233,6 +239,7 @@ class Row:
                 self.lbl = Button(self.frame, text=text, width=25, command=self.display)
                 self.lbl.pack(side=LEFT, padx=10, pady=3)
                 self.imgPath = imgPath
+                self.limit = limit
                 self.entry = Entry(self.frame)
                 self.entry.pack(fill=X, padx=10, expand=True)
 
@@ -275,7 +282,7 @@ class Example(Frame):
         
         
         for i, polygonName in enumerate(polygonNames):
-                rows.append(Row(self, polygonName, imageNames[i]))                    
+                rows.append(Row(self, polygonName, imageNames[i], limits[i]))                    
 	               
 	####################
         
@@ -315,120 +322,13 @@ def isNumber(s):
         except ValueError:
                 return False
            
-def isOkay(number, text):
-        if(text == "Zmaj (Draco)"):
-                if(number < 0 or number > 73):
+def isOkay(number):
+        for row in rows:
+                if (row.limit < number):
                         return False
                 else:
                         return True
 
-        if(text == "Persej (Perseus)"):
-                        if(number < 0 or number > 59):
-                                return False
-                        else:
-                                return True
-
-        if(text == "Veliki Medved (Ursa Major)"):
-                        if(number < 0 or number > 54):
-                                return False
-                        else:
-                                return True        
-        
-        if(text == "Blizanci (Gemini)"):
-                if(number < 0 or number > 30):
-                        return False
-                else:
-                        return True
-        
-        if(text == "Orao (Aquila)"):
-                if(number < 0 or number > 27):
-                        return False
-                else:
-                        return True
-
-        if(text == "Pegaz (Pegasus)"):
-                if(number < 0 or number > 49):
-                        return False
-                else:
-                        return True
-        
-        if(text == "Cefaj (Cepheus)"):
-                if(number < 0 or number > 65):
-                        return False
-                else:
-                        return True
-
-        if(text == "Bik (Taurus)"):
-                if(number < 0 or number > 32):
-                        return False
-                else:
-                        return True
-
-        if(text == "Lav (Leo)"):
-                if(number < 0 or number > 45):
-                        return False
-                else:
-                        return True
-        
-        if(text == "Devica (Virgo)"):
-                if(number < 0 or number > 31):
-                        return False
-                else:
-                        return True
-
-        if(text == "Volar (Botes)"):
-                if(number < 0 or number > 86):
-                        return False
-                else:
-                        return True
-
-        if(text == "Vaga (Libra)"):
-                if(number < 0 or number > 30):
-                        return False
-                else:
-                        return True
-
-        if(text == "Herkul/Lira (Hercules/Lyra)"):
-                if(number < 0 or number > 52):
-                        return False
-                else:
-                        return True
-
-        if(text == "Labud (Cygnus)"):
-                if(number < 0 or number > 65):
-                        return False
-                else:
-                        return True
-        
-        if(text == "Herkul/Zmaj (Hercules/Draco)"):
-                if(number < 0 or number > 61):
-                        return False
-                else:
-                        return True
-        
-        if(text == "Lovacki Psi (Canes Veratici)"):
-                if(number < 0 or number > 36):
-                        return False
-                else:
-                        return True
-
-        if(text == "Kocijas (Auriga)"):
-                if(number < 0 or number > 81):
-                        return False
-                else:
-                        return True
-
-        if(text == "Andromeda (Andromeda)"):
-                if(number < 0 or number > 52):
-                        return False
-                else:
-                        return True
-
-        if(text == "Mali Medved (Ursa Minor)"):
-                if(number < 0 or number > 32):
-                        return False
-                else:
-                        return True
 def calculateButtonClick():
         br = 0.0
         pomocBr = 0.0
@@ -443,7 +343,7 @@ def calculateButtonClick():
                                 return
                         else:
                                 valueOfEntry =  float(entry.get())
-                                if isOkay(valueOfEntry, polygonNames[i]) == False:
+                                if isOkay(valueOfEntry) == False:
                                         losUnos()
                                         clearButtonClick()
                                         return
