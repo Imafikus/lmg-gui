@@ -221,7 +221,7 @@ poligoni = [ lZmaj, lPersej, lVMedved, lBlizanci, lOrao, lPegaz, lCefej, lBik, l
 
 rows = []
 
-polygonNames = ["Zmaj (Draco)", "Persej (Perseus)", "Veliki Medved (Ursa Major)", "Blizanci (Gemini)", "Orao (Aquila)", "Pegaz (Pegasus)", "Cefaj (Cepheus)", "Bik (Taurus)", "Lav(Leo)", "Devica (Virgo)", "Volar (Botes)",  "Vaga(Libra)", "Herkul/Lira (Hercules/Lyra)", "Labud (Cygnus)", "Herkul/Zmaj (Hercules/Draco)", "Lovacki Psi (Canes Veratici)", "Kocijas (Auriga)", "Andromeda (Andromeda)", "Mali Medved (Ursa Minor)"]
+polygonNames = ["Zmaj (Draco)", "Persej (Perseus)", "Veliki Medved (Ursa Major)", "Blizanci (Gemini)", "Orao (Aquila)", "Pegaz (Pegasus)", "Cefaj (Cepheus)", "Bik (Taurus)", "Lav(Leo)", "Devica (Virgo)", "Volar (Botes)",  "Vaga(Libra)", "Herkul/Lira (Hercules/Lyra)", "Labud (Cygnus)", "Herkul/Zmaj (Hercules/Draco)", "Lovački Psi (Canes Veratici)", "Kočijaš (Auriga)", "Andromeda (Andromeda)", "Mali Medved (Ursa Minor)"]
 
 
 imageNames = ["poligon1.jpg", "poligon2.jpg", "poligon3.jpg", "poligon4.jpg","poligon5.jpg", "poligon6.jpg", "poligon7.jpg", "poligon8.jpg", "poligon9", "poligon10.jpg", "poligon11.jpg", "poligon12.jpg","poligon13.jpg", "poligon14.jpg", "poligon15.jpg", "poligon16.jpg", "poligon17.jpg", "poligon18.jpg", "poligon19.jpg" ]
@@ -309,9 +309,11 @@ def sayLMG(value):
         messagebox.showinfo("Porukica", value)
 
 def premaloPoligona():
-        messagebox.showinfo("Porukica", "Uneti vise od jednog poligona")
+        messagebox.showwarning("Porukica", "Uneti više od jednog poligona")
+
 def losUnos():
-        messagebox.showinfo("Porukica", "Los unos")
+        messagebox.showerror("Porukica", "Loš unoš")
+
 def clearButtonClick():
         for row in rows:
                 row.entry.delete(0, "end")                
