@@ -324,9 +324,9 @@ def isNumber(s):
            
 def isOkay(row, number):
         if((number < row.limit ) and (number > 0)):
-                return False
-        else:
                 return True
+        else:
+                return False
 
 def calculateButtonClick():
         br = 0.0
