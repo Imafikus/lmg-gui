@@ -269,7 +269,7 @@ class Example(Frame):
     def initUI(self):
       
         self.master.title("Poligon Poligon")
-        self.pack(fill=BOTH, expand=True)
+        self.pack(fill=BOTH, expand=True, pady=5)
 	
         frames = []
         
@@ -463,7 +463,7 @@ def calculateButtonClick():
 def main():
   
     root = Tk()
-    root.geometry("300x630+300+50")
+    root.geometry("300x640+300+50")
     app = Example()
     root.mainloop()  
 
