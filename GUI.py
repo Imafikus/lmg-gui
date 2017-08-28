@@ -236,7 +236,7 @@ class Row:
                 self.frame = Frame(parent)
                 self.frame.pack(fill=X)
                 self.text = text
-                self.lbl = Button(self.frame, text=text, width=25, command=self.display)
+                self.lbl = Button(self.frame, text=text, width=25,  command =self.display ) 
                 self.lbl.pack(side=LEFT, padx=10, pady=3)
                 self.imgPath = imgPath
                 self.limit = limit
@@ -290,75 +290,76 @@ class Example(Frame):
         frame20 = Frame(self)
         frame20.pack(fill=X)
             
-        clearButton = Button(frame20, text="Clear", command=clearButtonClick)
+        clearButton = Button(frame20, text="Clear", command=clear_button_click)
         clearButton.pack(side="left", padx=10, pady=7.5, expand=1)
         
 
-        calculateButton = Button(frame20, text="Calculate", command=calculateButtonClick)
+        calculateButton = Button(frame20, text="Calculate", command=calculate_button_click)
         calculateButton.pack(side="right", padx=10, pady=7.5, expand=0.5)
        
         
-def findLMG(poligon, index, value):
+def find_lmg(poligon, index, value):
         help = 0
-        while(help < index):
+        while help < index:
                 help = help + 1
         value = poligon[help]
         return value
 
-def sayLMG(value):
-        messagebox.showinfo("Porukica", value)
+def say_lmg(value):
+        messagebox.showinfo("LMG", value)
 
-def premaloPoligona():
-        messagebox.showwarning("Porukica", "Uneti više od jednog poligona")
+def only_one_input():
+        messagebox.showwarning("Warning", "At least two polygons are required.")
 
-def losUnos():
-        messagebox.showerror("Porukica", "Loš unoš")
+def bad_input():
+        messagebox.showerror("Error", "Bad Input.")
 
-def clearButtonClick():
+def clear_button_click():
         for row in rows:
-                row.entry.delete(0, "end")                
-def isNumber(s):
+                row.entry.delete(0, "end")    
+            
+def is_number(s):
         try:
                 float(s)        
                 return True
         except ValueError:
                 return False
            
-def isOkay(row, number):
-        if((number < row.limit ) and (number > 0)):
+def is_okay(row, number):
+        if(number < row.limit and number > 0):
                 return True
         else:
                 return False
 
-def calculateButtonClick():
+def calculate_button_click():
         br = 0.0
-        pomocBr = 0.0
+        help = 0.0
         im = 0.0
         allGood = True
         for i, row in enumerate(rows):
                 entry = row.entry
-                if (len(entry.get()) != 0):
-                        if (isNumber(entry.get()) == False):
-                                losUnos()
-                                clearButtonClick()
+                if len(entry.get()) != 0:
+                        if is_number(entry.get()) == False:
+                                bad_input()
+                                clear_button_click()
                                 return
                         else:
                                 valueOfEntry =  float(entry.get())
-                                if isOkay(row, valueOfEntry) == False:
-                                        losUnos()
-                                        clearButtonClick()
+                                if is_okay(row, valueOfEntry) == False:
+                                        bad_input()
+                                        clear_button_click()
                                         return
                                 else:
-                                        pomocBr = findLMG(poligoni[i], valueOfEntry, pomocBr)
-                                        br = br + pomocBr
+                                        help = find_lmg(poligoni[i], valueOfEntry, help)
+                                        br = br + help
                                         im = im + 1              
                 
-        if (im > 1):
+        if im > 1:
                 LMG = br/im
-                message = "Vrednost LMG-a je :" + str(round(LMG, 2))
-                sayLMG(message)
+                message = "Your LMG value is: " + str(round(LMG, 2))
+                say_lmg(message)
         else:
-                premaloPoligona()
+                only_one_input()
        
 
 def main():
