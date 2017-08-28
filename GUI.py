@@ -341,13 +341,11 @@ def calculate_button_click():
                 if len(entry.get()) != 0:
                         if is_number(entry.get()) == False:
                                 bad_input()
-                                clear_button_click()
                                 return
                         else:
                                 valueOfEntry =  float(entry.get())
                                 if is_okay(row, valueOfEntry) == False:
                                         bad_input()
-                                        clear_button_click()
                                         return
                                 else:
                                         help = find_lmg(poligoni[i], valueOfEntry, help)
