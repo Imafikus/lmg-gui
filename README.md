@@ -2,7 +2,7 @@
 GUI for calculating LMG. Used for visual observations of meteors showers. It also has pictures of polygons used for determine LMG.
 
 
-#Folder ,,new" contains only pictures of polygons.
+### Folder "new" contains only pictures of polygons.
 
 # Install dependencies
 
@@ -26,3 +26,7 @@ For Windows tk package should be included in standard python installation
 ## PIL package 
 pip install --user pillow
 
+## Running file
+```
+python3 GUI.py
+```
