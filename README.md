@@ -22,8 +22,14 @@ sudo apt-get install tk
 For Windows tk package should be included in standard python installation
 
 ## PIL package 
+```
 pip install --user pillow
-sudo apt-get install python3-tk(For Debian Strech / Ubuntu: try this if it doesn't work only with package above)
+```
+
+```
+sudo apt-get install python3-tk
+```
+(For Debian Strech / Ubuntu: try this if it doesn't work only with package above)
 ## Running file
 ```
 python3 GUI.py
