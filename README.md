@@ -1,13 +1,11 @@
 # LMG-GUI
-GUI for calculating LMG. Used for visual observations of meteors showers. It also has pictures of polygons used for determine LMG.
+GUI for calculating LMG. Used for visual observations of meteors showers. Made for Petnica Meteor Group.
 
-
-### Folder "new" contains only pictures of polygons.
 
 # Install dependencies
 
-##
-python 3.x
+## Python
+python 3.x 
 
 ## tk package
 
@@ -25,7 +23,7 @@ For Windows tk package should be included in standard python installation
 
 ## PIL package 
 pip install --user pillow
-
+sudo apt-get install python3-tk(For Debian Strech / Ubuntu: try this if it doesn't work only with package above)
 ## Running file
 ```
 python3 GUI.py
