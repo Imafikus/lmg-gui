@@ -247,7 +247,7 @@ class Row:
                 root = Toplevel()
                 root.wm_title(self.text)
 
-                path = "New/" + self.imgPath
+                path = "stripped_polygons/" + self.imgPath
                 pomoc = Image.open(path)
 
                 basewidth = 600
